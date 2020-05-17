@@ -4,14 +4,19 @@ import { useSelector } from 'react-redux';
 import RepoContainer from './RepoContainer';
 import IssueContainer from './IssueContainer';
 
+const Main = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
-const Main = styled.div``;
 
 function MainContainer() {
 
   const repoList = useSelector(state => state.repos.list);
   const reposPending = useSelector(state => state.repos.isPending);
   const repoError = useSelector(state => state.repos.err);
+
+  const issueList = useSelector(state => state.issues.list);
 
   // If repos are loading / not available, render accordingly
   if (reposPending) return <div> Loading repos... </div>;
@@ -22,7 +27,7 @@ function MainContainer() {
   return (
     <Main>
       <RepoContainer repoList={repoList}/>
-      <IssueContainer/>
+      {issueList ? <IssueContainer issueList={issueList}/> : null}
     </Main>
   );
 }
