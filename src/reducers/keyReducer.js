@@ -4,7 +4,7 @@ const initialState = {
   apiKey: '',
 };
 
-const keyReducer = (state = initialState, action) {
+const keyReducer = (state = initialState, action) => {
   switch(action.type) {
     case types.SET_API_KEY:
       return { ...state, apiKey: action.payload };
@@ -12,3 +12,5 @@ const keyReducer = (state = initialState, action) {
       return state;
   }
 };
+
+export default keyReducer;
