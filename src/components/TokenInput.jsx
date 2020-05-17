@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { setApiKey } from '../actions/keyActions';
 
 const InputContainer = styled.div``;
 
 const Input = styled.input``;
 const Button = styled.button``;
 
+
 function TokenInput() {
 
+  // Value to store inputted API key
   const [keyInput, setKeyInput] = useState('');
 
   const dispatch = useDispatch();
 
+  // Handler to update store with API key and retrieve repos
   function handleSubmit() {
-    // dispatch actions to set API key in store and get repos
-    console.log(`setting API key to: ${keyInput}`)
+    dispatch(setApiKey(keyInput));
+    // dispatch(getRepos(keyInput));
+    // Reset input field to empty
     setKeyInput('');  
   }
 
