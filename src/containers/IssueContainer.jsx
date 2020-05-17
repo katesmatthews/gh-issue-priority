@@ -1,12 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch} from 'react-redux';
+import Issue from '../components/Issue';
 
-const Issues = styled.div``;
+const Issues = styled.div`
+  width: 100%;
+`;
 
-function IssueContainer() {
+function IssueContainer({ issueList }) {
+
+  const issueComponents = issueList.map(issue => (
+    <Issue 
+      key={issue.id}
+      issueId={issue.id}
+      avatarURL={issue.assignee ? issue.assignee.avatar_url : null}
+      title={issue.title}
+      created={issue.created_at}
+      updated={issue.updated_at}
+    />
+  ));
+
   return (
     <Issues>
-      Issues here
+      <h3> 
+        Issues: 
+      </h3>
+      {issueComponents}
     </Issues>
   );
 }
