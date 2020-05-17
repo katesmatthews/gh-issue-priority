@@ -6,8 +6,21 @@ import { getRepos } from '../actions/repoActions';
 
 const InputContainer = styled.div``;
 
-const Input = styled.input``;
-const Button = styled.button``;
+const Input = styled.input`
+  border-radius: 3px;
+  height: 20px;
+  width: 180px;
+  padding: 3px;
+  margin: 5px;
+  border-radius: 3px;
+`;
+
+const Button = styled.button`
+  padding: 5px;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 3px;
+`;
 
 
 function TokenInput() {
