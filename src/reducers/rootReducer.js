@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import keyReducer from './keyReducer';
 
 const rootReducer = combineReducers({
-  keyReducer,
+  key: keyReducer,
 });
 
 export default rootReducer;
