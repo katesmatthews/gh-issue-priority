@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import keyReducer from './keyReducer';
 
 const rootReducer = combineReducers({
-  // tbd
+  keyReducer,
 });
 
 export default rootReducer;
