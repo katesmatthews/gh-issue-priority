@@ -3,7 +3,7 @@ import * as types from '../actions/actionTypes';
 const initialState = {
   list: null,
   isPending: false,
-}
+};
 
 export const issueReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -18,4 +18,4 @@ export const issueReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
