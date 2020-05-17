@@ -1,10 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useSelector, useDispatch} from 'react-redux';
 import Issue from '../components/Issue';
 
+const moveLeft = keyframes`
+from { transform: translateX(50px) }
+to { transform: translateX(0px) }
+`;
+
 const Issues = styled.div`
   width: 100%;
+  animation-name: ${moveLeft};
+  animation-duration: .3s;
 `;
 
 function IssueContainer({ issueList }) {
@@ -25,7 +32,7 @@ function IssueContainer({ issueList }) {
       <h3> 
         Issues: 
       </h3>
-      {issueComponents}
+      {issueComponents.length ? issueComponents : <div> This repository has no issues. </div>}
     </Issues>
   );
 }
