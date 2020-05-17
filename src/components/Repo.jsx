@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSelectedRepo } from '../actions/repoActions';
+import { getIssues } from '../actions/issueActions';
 
 
 const RepoCard = styled.div`
@@ -19,10 +20,11 @@ function Repo({ repoId, name, issuesURL }) {
 
   const dispatch = useDispatch();
   const selectedRepo = useSelector(state => state.repos.repoId);
+  const apiKey = useSelector(state => state.key.apiKey);
 
   function handleSelect() {
     dispatch(setSelectedRepo(repoId));
-    // dispatch action to retrieve issues
+    dispatch(getIssues(issuesURL, apiKey));
   }
 
   return (
