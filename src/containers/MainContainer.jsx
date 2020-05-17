@@ -21,7 +21,7 @@ function MainContainer() {
 
   return (
     <Main>
-      <RepoContainer/>
+      <RepoContainer repoList={repoList}/>
       <IssueContainer/>
     </Main>
   );
