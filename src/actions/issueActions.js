@@ -1,8 +1,8 @@
 import * as types from '../actions/actionTypes';
 
-export const getIssues = apiKey => dispatch => {
+export const getIssues = (issuesURL, apiKey) => dispatch => {
   dispatch({ type: types.REQUEST_ISSUES_PENDING });
-  fetch('', {
+  fetch(issuesURL, {
     headers: { Authorization: `token ${apiKey}`}
   })
     .then(res => {
