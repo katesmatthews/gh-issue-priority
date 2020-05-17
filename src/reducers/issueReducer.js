@@ -5,7 +5,7 @@ const initialState = {
   isPending: false,
 };
 
-export const issueReducer = (state = initialState, action) => {
+const issueReducer = (state = initialState, action) => {
   switch(action.type) {
     case types.REQUEST_ISSUES_PENDING:
       return { ...state, isPending: true };
@@ -19,3 +19,5 @@ export const issueReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default issueReducer;
