@@ -9,7 +9,7 @@ const RepoCard = styled.div`
   padding: 5px;
   border: 1px solid #9c9c9c;
   border-radius: 3px;  
-  background-color: ${({selected}) => selected ? '#c4c4c4' : '' };
+  background-color: ${({selected}) => selected ? '#e0e0e0' : '' };
   margin: 5px;
   :hover {
     border: 1px solid black;
