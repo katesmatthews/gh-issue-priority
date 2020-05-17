@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Repo from '../components/Repo';
 
-const Repos = styled.div``;
+const Repos = styled.div`
+  width: 40%;
+`;
 
 function RepoContainer({ repoList }) {
 
