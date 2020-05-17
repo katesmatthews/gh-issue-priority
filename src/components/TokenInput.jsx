@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { setApiKey } from '../actions/keyActions';
+import { getRepos } from '../actions/repoActions';
 
 const InputContainer = styled.div``;
 
@@ -19,7 +20,7 @@ function TokenInput() {
   // Handler to update store with API key and retrieve repos
   function handleSubmit() {
     dispatch(setApiKey(keyInput));
-    // dispatch(getRepos(keyInput));
+    dispatch(getRepos(keyInput));
     // Reset input field to empty
     setKeyInput('');  
   }
