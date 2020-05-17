@@ -1,12 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import Repo from '../components/Repo';
 
 const Repos = styled.div``;
 
-function RepoContainer() {
+function RepoContainer({ repoList }) {
+
+  const repoComponents = repoList.map(repo => (
+    <Repo
+      key={repo.id}
+      repoId={repo.id}
+      name={repo.full_name}
+      issuesURL={repo.issues_url.slice(0, repo.issues_url.length - 9)}
+    />
+  ));
+
+
   return (
     <Repos>
-      Repos here
+      <h3>
+        Repositories:
+      </h3>
+      {repoComponents}
     </Repos>
   );
 }
