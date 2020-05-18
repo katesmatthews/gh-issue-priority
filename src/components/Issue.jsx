@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import { fuzzyTime, ddmmyyyy } from '../utils/datetime';
 import noAssignee from '../img/no-assignee.png';
 
 const IssueCard = styled.div`
   border: 1px solid #6e6e6e;
   border-radius: 3px;
   padding: 5px;
-  display: flex-column;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin: 5px;
+  height: 10vw;
 `;
 
 const Avatar = styled.img`
@@ -36,8 +39,8 @@ function Issue({ issueId, avatarURL, title, created, updated }) {
         <Avatar src={avatarURL ? avatarURL : noAssignee} />
         <Title> {title} </Title>
       </Header>
-      <div> {`Created: ${created}`} </div>
-      <div> {`Updated: ${updated}`} </div>
+      <div> {`Created: ${ddmmyyyy(created)}`} </div>
+      <div> {`Updated: ${fuzzyTime(updated)}`} </div>
     </IssueCard>
     );
 }
