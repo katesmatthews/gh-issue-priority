@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { setIssueOrder } from '../actions/issueActions';
 import { fuzzyTime, ddmmyyyy } from '../utils/datetime';
 import noAssignee from '../img/no-assignee.png';
 
@@ -8,8 +10,6 @@ const IssueCard = styled.div`
   border-radius: 3px;
   padding: 5px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   margin: 5px;
   height: 10vw;
 `;
@@ -22,7 +22,6 @@ const Avatar = styled.img`
 const Header = styled.div`
   display: flex;
   padding: 5px;
-  // justify-content: space-between;
   align-items: center;
   height: 40px;
   background-color: #e0e0e0;
@@ -32,15 +31,70 @@ const Title = styled.h4`
   text-align: center;
 `;
 
-function Issue({ issueId, avatarURL, title, created, updated }) {
+const Arrows = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 5px;
+`;
+
+const Arrow = styled.div``;
+
+const Content = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+function Issue({ issueId, issueList, selectedRepo, avatarURL, title, created, updated }) {
+
+  const dispatch = useDispatch();
+
+  function reorderIssues(direction) {
+    const issues = issueList.slice();
+
+    for (let i = 0; i < issues.length; i++) {
+      if (issues[i].id === issueId) {
+        if (direction === 'up') {
+          // If up arrow clicked for topmost issue, do nothing
+          if (i === 0) return;
+          // Otherwise swap current and previous issue
+          [issues[i - 1], issues[i]] = [issues[i], issues[i - 1]]
+        } else if (direction === 'down') {
+          // If down arrow clicked for bottommost issue, do nothing
+          if (i === issues.length - 1) return;
+          // Otherwise swap current and next issue
+          [issues[i + 1], issues[i]] = [issues[i], issues[i + 1]]
+        }
+        break;
+      }
+    }
+
+    // Create array of issue IDs, ordered by new sort
+    const newIssuePriority = issues.map(issue => issue.id);
+
+    // Save new order in localStorage so it will persist
+    window.localStorage.setItem(selectedRepo, JSON.stringify(newIssuePriority));
+
+    // Update store with new ordering of issues
+    dispatch(setIssueOrder(issues));
+  }
+
   return (
     <IssueCard>
-      <Header>
-        <Avatar src={avatarURL ? avatarURL : noAssignee} />
-        <Title> {title} </Title>
-      </Header>
-      <div> {`Created: ${ddmmyyyy(created)}`} </div>
-      <div> {`Updated: ${fuzzyTime(updated)}`} </div>
+      <Arrows>
+        <Arrow onClick={() => reorderIssues('up')}> /\ </Arrow>
+        <Arrow onClick={() => reorderIssues('down')}> \/ </Arrow>
+      </Arrows>
+      <Content>
+        <Header>
+          <Avatar src={avatarURL ? avatarURL : noAssignee} />
+          <Title> {title} </Title>
+        </Header>
+        <div> {`Created: ${ddmmyyyy(created)}`} </div>
+        <div> {`Updated: ${fuzzyTime(updated)}`} </div>
+      </Content>
     </IssueCard>
     );
 }
