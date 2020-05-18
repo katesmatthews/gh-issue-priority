@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setApiKey } from '../actions/keyActions';
 import { getRepos } from '../actions/repoActions';
 
