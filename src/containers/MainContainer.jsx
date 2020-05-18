@@ -13,6 +13,7 @@ const Main = styled.div`
 function MainContainer() {
 
   const repoList = useSelector(state => state.repos.list);
+  const selectedRepo = useSelector(state => state.repos.repoId);
   const reposPending = useSelector(state => state.repos.isPending);
   const repoError = useSelector(state => state.repos.err);
 
@@ -27,7 +28,7 @@ function MainContainer() {
   return (
     <Main>
       <RepoContainer repoList={repoList}/>
-      {issueList ? <IssueContainer issueList={issueList}/> : null}
+      {issueList ? <IssueContainer issueList={issueList} selectedRepo={selectedRepo}/> : null}
     </Main>
   );
 }
