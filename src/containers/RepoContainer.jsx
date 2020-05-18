@@ -3,8 +3,22 @@ import styled from 'styled-components';
 import Repo from '../components/Repo';
 
 const Repos = styled.div`
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 20px 10px 0px 0px;
   width: 40%;
+  min-width: 400px;
+  box-shadow: 5px 5px 40px 2px lightgrey;
+  border-radius: 5px;
 `;
+
+const Content = styled.div`
+  @media (max-width: 768px) {
+    height: 400px;
+    overflow: scroll;
+  }
+`;
+
 
 function RepoContainer({ repoList }) {
 
@@ -23,7 +37,9 @@ function RepoContainer({ repoList }) {
       <h3>
         Repositories:
       </h3>
-      {repoComponents}
+      <Content>
+        {repoComponents}
+      </Content>
     </Repos>
   );
 }
