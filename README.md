@@ -1,31 +1,25 @@
+Hello! This was an enjoyable project 🙂. Here's some information about it:
 
+## Installation
+- Type `npm install` (or yarn if preferred) to install dependencies.
 
-## Available Scripts
+## To run the app
+- Type `npm start` to run the application, and open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Enter a GitHub API key (e.g. a personal access token) into the input field to see your repositories
+- Click on a listed repository to view its issues
+- Click the up or down arrows on the left of each issue to reorder the issues
 
-In the project directory, you can run:
+## To run tests
+- Type `npm test` to run the Jest test suite.
 
-### `yarn start`
+## TODO (in order of importance)
+- Achieve more test coverage (particularly of components)
+- Replace non-semantic HTML tags with semantic ones
+- Include JSDoc-style annotations to components / functions
+- More thoroughly comment code
+- Improve styling
+- Improve "fuzzyTime" output (perhaps use a library if a small one exists)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
-(This project was bootstrapped with Create React App.)
+*(This project was bootstrapped with Create React App)*
