@@ -24,7 +24,7 @@ function Repo({ repoId, name, issuesURL }) {
 
   function handleSelect() {
     dispatch(setSelectedRepo(repoId));
-    dispatch(getIssues(issuesURL, apiKey));
+    dispatch(getIssues(issuesURL, apiKey, repoId));
   }
 
   return (
