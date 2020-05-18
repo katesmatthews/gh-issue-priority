@@ -1,15 +1,19 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { useSelector, useDispatch} from 'react-redux';
 import Issue from '../components/Issue';
 
 const moveLeft = keyframes`
-from { transform: translateX(50px) }
-to { transform: translateX(0px) }
+  from { transform: translateX(50px) }
+  to { transform: translateX(0px) }
 `;
 
 const Issues = styled.div`
   width: 100%;
+  margin-left: 20px;
+  padding-top: 20px;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
   animation-name: ${moveLeft};
   animation-duration: .3s;
 `;
