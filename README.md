@@ -1,5 +1,6 @@
 Hello! This was an enjoyable project 🙂. Here's some information about it:
 
+
 ## Installation
 - Type `npm install` (or yarn if preferred) to install dependencies.
 
@@ -12,7 +13,9 @@ Hello! This was an enjoyable project 🙂. Here's some information about it:
 ## To run tests
 - Type `npm test` to run the Jest test suite.
 
-## TODO (in order of importance)
+<hr>
+
+### TODO (in order of importance, descending)
 - Achieve more test coverage (particularly of components)
 - Replace non-semantic HTML tags with semantic ones
 - Include JSDoc-style annotations to components / functions
