@@ -14,12 +14,14 @@ const Issues = styled.div`
   animation-duration: .3s;
 `;
 
-function IssueContainer({ issueList }) {
+function IssueContainer({ issueList, selectedRepo }) {
 
   const issueComponents = issueList.map(issue => (
     <Issue 
       key={issue.id}
       issueId={issue.id}
+      issueList={issueList}
+      selectedRepo={selectedRepo}
       avatarURL={issue.assignee ? issue.assignee.avatar_url : null}
       title={issue.title}
       created={issue.created_at}
